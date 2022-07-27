@@ -1,11 +1,11 @@
-* {
-    margin: none;
-    padding: none;
+body {
+    border: 1px solid;
 }
 
 header nav {
     display: flex;
     justify-content: space-between;
+    margin: 0 20px;
 }
 
 header ul {
@@ -14,4 +14,30 @@ header ul {
 
 a:link {
     text-decoration: none;
+}
+
+.start {
+    text-align: center;
+    /*border: solid; /* used for wire framing - will be removed when done */
+    margin: auto;
+    width: 700px;
+}
+
+.challenge {
+    font-size: 350%;
+}
+
+.prompt {
+    font-size: 25px;
+
+}
+
+button {
+    background-color: purple;
+    border-radius: 10px;
+    color: white;
+    padding: 10px;
+    width: 135px;
+    height: 50px;
+    font-size: 20px;
 }
