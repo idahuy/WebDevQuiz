@@ -55,9 +55,9 @@ function countdown() {
   }, 1000);
 };
 
-function startGame(quizIndex) {
+function startGame(quizArr) {
   // wipes existing strings on page
-  questions.innerHTML = "";
+  quiz.innerHTML = "";
   var makeUl = makeUl.innerHTML = "";
   // loops through questions array
   for (var i = 0; i < questions.clientHeight; i++) {
@@ -106,8 +106,45 @@ function check(event) {
   quiz.appendChild(divEl);
 };
 
-function endGame() {
+
+// displays the end screen for the quiz
+function endQuiz() {
   
+  var makeH3 = document.createElement("h3");
+  makeH3.setAttribute("class", "challenge");
+  makeH3.textContent = "All done!"
+  quiz.appendChild(makeH3);
+
+  var makeP = document.createElement("p");
+  quiz.appendChild(makeP);
+
+  // gets final score
+  if (totalScore >= 0) {
+    var scoreP = document.createElement("p");
+    scoreP.textContent = "Your final score is: " + totalScore;
+    quiz.appendChild(scoreP);
+  }
+
+  // enter initials string
+  var initials = document.createElement("label");
+  initials.setAttribute("class", "initials");
+  initials.textContent = "Enter your initials: ";
+  quiz.appendChild(initials);
+
+  // user input for initials
+  var initialsInput = document.createElement("input");
+  initialsInput.setAttribute("type", "text");
+  initialsInput.setAttribute("class", "initialsInput");
+  initialsInput.setAttribute("placeholder", "Please enter initials...")
+  initialsInput.textContent = "";
+  quiz.appendChild(initialsInput);
+
+  // submit button for initials input
+  var submit = document.createElement("button");
+  submit.setAttribute("type", "submit");
+  submit.setAttribute("class", "submit");
+  submit.textContent = "Submit";
+  quiz.appendChild(submit);
 }
 
 startButton.addEventListener('click', function() {
