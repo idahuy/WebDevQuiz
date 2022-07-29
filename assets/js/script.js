@@ -3,7 +3,7 @@ var timer = document.getElementById('countdown')
 
 // declared vars
 var score = 0;
-var quizIndex = 0;
+var quizArr = 0;
 var quiz = document.querySelector(".quiz")
 var container = document.querySelector(".container")
 
@@ -56,15 +56,58 @@ function countdown() {
 };
 
 function startGame(quizIndex) {
+  // wipes existing strings on page
+  questions.innerHTML = "";
+  var makeUl = makeUl.innerHTML = "";
+  // loops through questions array
+  for (var i = 0; i < questions.clientHeight; i++) {
+    var userQuestions = questions[quizArr].title;
+    var userChoices = questions[QuizArr].choices;
+    quiz.textContent = userQuestions;
+  }
+
+  userChoices.forEach(function (item) {
+    var listEl = document.createElement("li");
+    listEl.textContent = item;
+    quiz.appendChild(makeUl);
+    makeUl.appendChild(listEl);
+    listEl.addEventListener("click", (compare));
+  })
+};
+
+// create a function to check user choices to correct answers
+function check(event) {
+  var element = event.target;
+
+  if (element.matches("li")) {
+    var divEl = document.createElement("div");
+    divEl.setAttribute("id", "divEl");
+    // check conditions
+    if (element.textContent == questions[quizArr].answer) {
+      // if user selected answer matches the correct answer in the array, add 10 to user's score and display the following message
+      score += 10;
+      divEl.textContent = "Correct"
+    } else {
+      // if user selected answer does not match the correct answer listed in the array, subtract 10 to the user's score and display the following message
+      timeLeft -= 10;
+      divEl.textContent = "Wrong"
+    }
+  }
+  // determines where you are currently in the array
+  quizArr++;
   
-}
+  if (QuizArr >= questions.length) {
+    var totalScore = score + timeLeft;
+    // when the counter for quizarr reaches a number higher than the amount of question objects listed in array display the following string
+    divEl.textContent = "End of the quiz, your score is " + totalScore;
+  } else {
+    startGame(quizArr);
+  }
+  quiz.appendChild(divEl);
+};
 
-function setNextQuestion() {
-
-}
-
-function selectAnswer() {
-
+function endGame() {
+  
 }
 
 startButton.addEventListener('click', function() {
