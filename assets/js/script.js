@@ -1,11 +1,12 @@
 // declare countdown id for timer variable
-var timer = document.getElementById('countdown')
+var timer = document.getElementById('countdown');
 
 // declared vars
 var score = 0;
 var quizArr = 0;
-var quiz = document.querySelector(".quiz")
-var container = document.querySelector(".container")
+var quiz = document.querySelector(".quiz");
+var container = document.querySelector(".container");
+var startButton = document.querySelector("#start");
 
 // declare array for objects of questions
 var questions = [
@@ -34,6 +35,7 @@ var questions = [
       choices: ["Javascript", "terminal / bash", "for loops", "console log"],
       answer: "console log"
   },
+
 ];
 
 // quiz timer
@@ -56,22 +58,23 @@ function countdown() {
 };
 
 function startGame(quizArr) {
+  var makeUl = document.createElement("ul");
   // wipes existing strings on page
   quiz.innerHTML = "";
-  var makeUl = makeUl.innerHTML = "";
+  makeUl.innerHTML = "";
   // loops through questions array
-  for (var i = 0; i < questions.clientHeight; i++) {
+  for (var i = 0; i < questions.length; i++) {
     var userQuestions = questions[quizArr].title;
-    var userChoices = questions[QuizArr].choices;
+    var userChoices = questions[quizArr].choices;
     quiz.textContent = userQuestions;
   }
 
-  userChoices.forEach(function (item) {
+  userChoices.forEach(function(item) {
     var listEl = document.createElement("li");
     listEl.textContent = item;
     quiz.appendChild(makeUl);
     makeUl.appendChild(listEl);
-    listEl.addEventListener("click", (compare));
+    listEl.addEventListener("click", (check));
   })
 };
 
@@ -96,9 +99,10 @@ function check(event) {
   // determines where you are currently in the array
   quizArr++;
   
-  if (QuizArr >= questions.length) {
+  if (quizArr >= questions.length) {
     var totalScore = score + timeLeft;
     // when the counter for quizarr reaches a number higher than the amount of question objects listed in array display the following string
+    endGame();
     divEl.textContent = "End of the quiz, your score is " + totalScore;
   } else {
     startGame(quizArr);
@@ -125,28 +129,58 @@ function endQuiz() {
     quiz.appendChild(scoreP);
   }
 
-  // enter initials string
-  var initials = document.createElement("label");
-  initials.setAttribute("class", "initials");
-  initials.textContent = "Enter your initials: ";
-  quiz.appendChild(initials);
+  function enterInitials() {
+    // enter initials string
+    var initialsPrompt = document.createElement("label");
+    initialsPrompt.setAttribute("class", "initials");
+    initialsPrompt.textContent = "Enter your initials: ";
+    quiz.appendChild(initialsPrompt);
 
-  // user input for initials
-  var initialsInput = document.createElement("input");
-  initialsInput.setAttribute("type", "text");
-  initialsInput.setAttribute("class", "initialsInput");
-  initialsInput.setAttribute("placeholder", "Please enter initials...")
-  initialsInput.textContent = "";
-  quiz.appendChild(initialsInput);
+    // user input for initials
+    var initialsInput = document.createElement("input");
+    initialsInput.setAttribute("type", "text");
+    initialsInput.setAttribute("class", "initialsInput");
+    initialsInput.setAttribute("placeholder", "Please enter initials...")
+    initialsInput.textContent = "";
+    quiz.appendChild(initialsInput);
 
-  // submit button for initials input
-  var submit = document.createElement("button");
-  submit.setAttribute("type", "submit");
-  submit.setAttribute("class", "submit");
-  submit.textContent = "Submit";
-  quiz.appendChild(submit);
+    // submit button for initials input
+    var submit = document.createElement("button");
+    submit.setAttribute("type", "submit");
+    submit.setAttribute("class", "submit");
+    submit.textContent = "Submit";
+    quiz.appendChild(submit);
+  }
+
+  // add an event listener for the button to capture initials and to add the initials + score to local storage
+  submit.addEventListener("click", function() {
+    var initials = initialsInput.value;
+
+    // will alert user if no value was entered continue to ask for initials until something is entered
+    if (initials === null || initials === "") {
+      window.alert("No value entered!");
+      enterInitials();
+    } else {
+      var highScore = {
+        initials: initials,
+        score: totalScore
+      }
+      var allScores = localStorage.getItem("allScores");
+      if (allScores = null) {
+        allScores = [];
+      } else {
+        allScores = JSON.parse(allScores);
+      }
+      allScores.push(totalScore);
+      var newScore = JSON.stringify(allScores);
+      localStorage.setItem("allScores", newScore);
+      // takes you to highscore.html
+      window.location.replace("./highscores.html");
+    }
+  });
 }
 
 startButton.addEventListener('click', function() {
   countdown();
+  startGame(quizArr);
 });
