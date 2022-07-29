@@ -14,9 +14,14 @@
         </nav>
     </header>
     <section class="quiz">
-        <h3 class="challenge">Coding Quiz Challenge</h3>
-        <p class="prompt">Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
-        <button id="start">Start Quiz</button>
+        <div class="intro" data-state="active">
+            <h3 class="challenge">Coding Quiz Challenge</h3>
+            <p class="prompt">Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
+            <button id="start">Start Quiz</button>
+        </div>
+        <div class="question" data-state="hidden">
+            <p>Test</p>
+        </div>
     </section>
     <script src="./assets/js/script.js"></script>
 </body>
