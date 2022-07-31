@@ -1,4 +1,3 @@
-// Jamie Morris Homework-4 Code Quiz 
 // Var with array and object for questions 
 var questions = [
   {
@@ -167,16 +166,12 @@ function endQuiz() {
   submit.addEventListener("click", function () {
       var initials = initialsInput.value;
 
-      if (initials === null) {
-
-          console.log("No value entered!");
-
+      if (initials === null || initials === "") {
       } else {
           var finalScore = {
               initials: initials,
               score: timeRemaining
           }
-          console.log(finalScore);
           var allScores = localStorage.getItem("allScores");
           if (allScores === null) {
               allScores = [];
