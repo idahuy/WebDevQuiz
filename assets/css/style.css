@@ -89,21 +89,23 @@ li {
     font-size: 20px;
     color: white;
     top: 30%;
-    left: 55%;
-    width: auto;
     text-align: center;
     text-decoration: none;
+    display: inline-block;
+    margin: 0 auto;
 }
 
 #clear {
     background-color: purple;
-    position: relative;
+    position: absolute;
     padding: 10px;
     font-size: 20px;
     color: white;
-    top: 30%;
-    right: 5%;
+    top: 28%;
     text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 0 auto;
 }
     
 @media screen and (max-width: 786px) {
