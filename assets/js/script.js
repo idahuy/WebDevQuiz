@@ -1,29 +1,29 @@
 // Var with array and object for questions 
 var questions = [
   {
-      title: "Commonly used data types DO NOT include:",
-      choices: ["strings", "booleans", "alerts", "numbers"],
-      answer: "alerts"
+      title: "Which tag is used to display text in title bar of a web document?",
+      choices: ["Body tag", "Meta tag", "Title tag", "Comment tag"],
+      answer: "Title tag"
   },
   {
-      title: "The condition in an if / else statement is enclosed within ____.",
-      choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
-      answer: "parentheses"
+      title: "The language that instructs the browser on how to display the hypertext, and adds pictures to the document is __",
+      choices: ["C", "COBOL", "HTML", "BASIC"],
+      answer: "HTML"
   },
   {
-      title: "Arrays in Javascript can be used to store ____.",
-      choices: ["numbers and strings", "other arrays", "booleans", "all of the above"],
-      answer: "all of the above"
+      title: "Which tag is used to identify the keywords describing the site?",
+      choices: ["Comment tag", "Title tag", "Meta tag", "Anchor tag"],
+      answer: "Meta tag"
   },
   {
-      title: "String values must be enclosed within ____ when being assigned to variables.",
-      choices: ["commas", "curly brackets", "quotes", "parenthesis"],
-      answer: "quotes"
+      title: "HTML allows us to create three different kinds of ___",
+      choices: ["Functions", "Events", "Files", "Lists"],
+      answer: "Lists"
   },
   {
-      title: "A very useful tool for used during development and debugging for printing content to the debugger is:",
-      choices: ["Javascript", "terminal / bash", "for loops", "console log"],
-      answer: "console log"
+      title: "HTML allows us to use ___ levels of headings.",
+      choices: ["Two", "Three", "Five", "Six"],
+      answer: "Six"
   },
 
 ];
