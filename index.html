@@ -10,17 +10,20 @@
     <header>
         <nav>
             <span><h2 class="high"><a href="./highscores.html">View high scores</a></h2></span>
-            <span><p id="countdown">Time: 0</p></span>
+            <div id="currentTime"></div>
         </nav>
     </header>
-    <section class="container">
-        <div class="quiz" data-state="active">
-            <h3 class="challenge">Coding Quiz Challenge</h3>
-            <p class="prompt">Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
-            <button id="start">Start Quiz</button>
-            <ul></ul>
+    <div id="container">
+        <!-- Div for quiz content -->
+        <div id="quiz">
+            <h1>Coding Quiz Challenge</h1>
+            <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect
+                answers
+                will penalize your score/time by ten seconds!</p>
+            <ul id="choicesUl"></ul>
+            <!-- Buttons -->
+            <button id="startTime">Start Quiz</button>
         </div>
-    </section>
     <script src="./assets/js/script.js"></script>
 </body>
 </html>
